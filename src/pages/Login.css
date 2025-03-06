@@ -1,0 +1,297 @@
+
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #979C9E;
+  }  
+  .login-container {
+    width: auto;  /* Adjusts based on content */
+    height: auto; /* Adjusts based on content */
+    max-width: 522px; /* Prevents it from getting too large */
+    background: #FCFDFD;
+    border-radius: 8px;
+    border: 1px solid #E3E5E5;
+    padding: 32px 56px 80px 56px; /* Top, Right, Bottom, Left */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; /* Space between elements */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  input, button {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .title-with-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px; /* Space between logo and text */
+    width: auto; /* "Hug" behavior */
+    max-width: 410px;
+  }
+
+  .logo {
+    width: auto;  /* "Hug" behavior */
+    max-width: 193px;  
+    height: auto;
+    max-height: 63px;
+    object-fit: contain; /* Ensures it maintains aspect ratio */
+  }
+  
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 410px;
+    gap: 16px;
+  }
+  
+  .title {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    color: #090A0A; /* Applying the background color as text color */
+  }
+  
+  .subtitle {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    color: #72777A; /* Applying the background color as text color */
+  }
+  .actions-container {
+    max-width: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px; /* Space between elements */
+    width: 100%; /* Makes it "Hug" the content */
+  }
+  .extra-tab {
+    width: 100%; /* Makes it 'fill' the container */
+    max-width: 410px; /* Prevents it from stretching */
+    height: auto; /* Allows it to 'hug' the content */
+    min-height: 199px; /* Ensures it has enough height */
+  
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between elements inside */
+    align-items: center;
+    justify-content: center;
+  
+    background: #FCFDFD; /* Light background for visibility */
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .option-button {
+    padding: 12px 24px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+  }
+  .submit-button {
+    width: 100%; /* Makes it 'fill' the container */
+    max-width: 410px; /* Ensures it doesn't stretch too much */
+    height: auto; /* Allows it to 'hug' the content */
+    min-height: 46px; /* Ensures it stays properly sized */
+  
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    transition: 0.2s ease-in-out;
+    gap: 10px; /* Won't affect much unless using flex/inline-flex */
+  
+    background: #DDAF53;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background: #c79a4a; /* Slightly darker on hover */
+  }
+
+  
+/* Input Fields */
+.input-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Spacing as per Figma */
+  width: 100%;
+}
+
+
+.input-label {
+  width: 410px;
+  height: 17px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: #090A0A;
+  margin-bottom: 8px;
+
+}
+
+.input-wrapper {
+  width: 410px;
+  height: 43px;
+  background: #FCFDFD;
+  border: 1px solid #E3E5E5;
+  border-radius: 4px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+
+}
+
+
+/* Input fields */
+.styled-input {
+  padding-left: 32px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #979C9E;
+  outline: none;
+}
+
+.styled-input::placeholder {
+  color: #72777A; /* Adjust to match design */
+  background: transparent; /* Remove background */
+}
+
+.styled-input[type="password"] {
+  padding-left: 32px;
+}
+
+
+input {
+  border: none;
+  outline: none;
+  flex: 1; /* Makes it fill space */
+  font-size: 16px;
+}
+
+/* User Icon */
+.user-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 14px; 
+}
+
+/* Eye Icon */
+.eye-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 14px;
+  cursor: pointer;
+}
+.lock-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 14px;
+}
+
+/* Description Styling */
+.input-description {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #979C9E; /* Matches Figma */
+  width: 240px;
+  height: 17px;
+  line-height: 100%;
+}
+
+/* Error Styling */
+.input-error {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: red; /* Matches Figma */
+  width: 33px;
+  height: 17px;
+  line-height: 100%;
+  display: block; /* Hide unless there's an error */
+}
+
+/* Remember Me + Link */
+.remember-forgot {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remember-forgot label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remember-forgot a {
+  text-decoration: none;
+  color: #DDAF53;
+  font-weight: 500;
+}
+  
+  

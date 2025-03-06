@@ -1,13 +1,11 @@
-import React from 'react';
-import './App.css';
+// src/App.js
+import React from "react";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Main Page</h1>
-        <p>Subtitle</p>
-      </header>
+      <Login />
     </div>
   );
 }
