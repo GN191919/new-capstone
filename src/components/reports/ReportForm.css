@@ -1,0 +1,127 @@
+.report-form-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.report-form-container h2 {
+    color: #090A0A;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    font-family: 'Inter', sans-serif;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #72777A;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 8px;
+}
+
+.form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid #DDE2E4;
+    border-radius: 8px;
+    min-height: 120px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #090A0A;
+    resize: vertical;
+    transition: all 0.3s ease;
+    background-color: #FFFFFF;
+}
+
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.file-input {
+    padding: 12px 16px;
+    border: 2px dashed #DDE2E4;
+    border-radius: 8px;
+    background-color: #F8F9FA;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    color: #72777A;
+    transition: all 0.3s ease;
+}
+
+.file-input:hover {
+    border-color: #007BFF;
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.submit-button {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    color: #28a745;
+    background-color: #d4edda;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .report-form-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+}
