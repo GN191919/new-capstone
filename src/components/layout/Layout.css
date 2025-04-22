@@ -1,0 +1,30 @@
+.main{
+    float: left;
+    width: 100%;
+}
+
+.sidebar {
+    float: left;
+    width: 20%;
+    background-color: #FFFFFF;
+    border-right: 1px solid #E5E5E5; 
+}
+
+.layout {
+    min-height: 100vh;
+    background-color: #F5F5F5;
+    float: left;
+    width:75%;
+}
+
+.layout-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main-content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}

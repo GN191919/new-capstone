@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/layout/Layout';
+import UserInfo from '../components/dashboard/UserInfo';
+import CheckIns from '../components/dashboard/CheckIns';
+import Goals from '../components/dashboard/Goals';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -21,18 +25,22 @@ const Dashboard = () => {
     if (!user) return null;
 
     return (
-        <div className="dashboard-container">
-            <header className="dashboard-header">
-                <h1>Welcome, {user.name}!</h1>
-                <button className="logout-button" onClick={handleLogout}>
-                    Logout
-                </button>
-            </header>
-            <div className="dashboard-content">
-                <p>You are logged in as: {user.email}</p>
-                <p>Role: {user.role}</p>
+        <Layout title="Dashboard">
+            <div className="dashboard-container">
+                <div className="dashboard-top-section">
+                    <UserInfo user={user} />
+                </div>
+                
+                <div className="dashboard-grid">
+                    <div className="dashboard-column">
+                        <CheckIns />
+                    </div>
+                    <div className="dashboard-column">
+                        <Goals />
+                    </div>
+                </div>
             </div>
-        </div>
+        </Layout>
     );
 };
 
