@@ -1,0 +1,20 @@
+{
+    "employee_overview": "Қызметкерге шолу",
+    "personal_details": "Жеке мәліметтер",
+    "department": "Бөлім",
+    "position": "Лауазым",
+    "supervisor": "Жетекші",
+    "reports_section": "Есептер",
+    "goals_section": "Мақсаттар",
+    "kpi_goals": "KPI мақсаттары",
+    "competency_goals": "Құзыреттілік мақсаттары",
+    "progress": "Прогресс",
+    "report_details": "Есеп мәліметтері",
+    "feedback": "Кері байланыс",
+    "enter_feedback": "Кері байланысты енгізіңіз",
+    "submit_feedback": "Кері байланысты жіберу",
+    "ai_analysis": "AI талдау",
+    "feedback_submitted": "Кері байланыс сәтті жіберілді",
+    "error_fetch_employee": "Қызметкер деректерін алу мүмкін болмады",
+    "error_submit_feedback": "Кері байланысты жіберу мүмкін болмады"
+}

@@ -157,17 +157,47 @@
 
 .languageSelect {
     position: absolute;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
+    z-index: 1000;
 }
 
-.languageSelect select {
-    padding: 6px 10px;
+.languageOptions {
+    display: flex;
+    gap: 8px;
+}
+
+.languageButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
     border: 1px solid #E5E5E5;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 8px;
     background: #FFFFFF;
     cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.languageButton span {
+    margin-left: 4px;
+}
+
+.languageButton:hover {
+    border-color: #DDAF53;
+    background-color: #FFF8E7;
+}
+
+.languageButton.active {
+    background-color: #DDAF53;
+    border-color: #DDAF53;
+    color: white;
+}
+
+.languageButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(221, 175, 83, 0.2);
 }
   
   

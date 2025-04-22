@@ -1,0 +1,14 @@
+{
+    "team_management": "Команданы басқару",
+    "add_employee": "Қызметкер қосу",
+    "name": "Аты",
+    "department": "Бөлім",
+    "position": "Лауазым",
+    "status": "Күйі",
+    "actions": "Әрекеттер",
+    "status_active": "Белсенді",
+    "status_vacation": "Демалыста",
+    "status_overdue": "Мерзімі өткен",
+    "error_fetch_employees": "Қызметкерлер тізімін алу мүмкін болмады",
+    "error_delete_employee": "Қызметкерді жою мүмкін болмады"
+}

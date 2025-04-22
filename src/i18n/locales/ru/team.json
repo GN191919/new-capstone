@@ -1,0 +1,14 @@
+{
+    "team_management": "Управление командой",
+    "add_employee": "Добавить сотрудника",
+    "name": "Имя",
+    "department": "Отдел",
+    "position": "Должность",
+    "status": "Статус",
+    "actions": "Действия",
+    "status_active": "Активный",
+    "status_vacation": "В отпуске",
+    "status_overdue": "Просрочено",
+    "error_fetch_employees": "Не удалось получить список сотрудников",
+    "error_delete_employee": "Не удалось удалить сотрудника"
+}

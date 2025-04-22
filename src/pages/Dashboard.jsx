@@ -27,16 +27,17 @@ const Dashboard = () => {
     return (
         <Layout title="Dashboard">
             <div className="dashboard-container">
-                <div className="dashboard-top-section">
-                    <UserInfo user={user} />
-                </div>
-                
-                <div className="dashboard-grid">
-                    <div className="dashboard-column">
-                        <CheckIns />
+                <div className="dashboard-content">
+                    <div className="dashboard-header">
+                        <UserInfo />
                     </div>
-                    <div className="dashboard-column">
-                        <Goals />
+                    <div className="dashboard-grid">
+                        <div className="dashboard-column">
+                            <CheckIns />
+                        </div>
+                        <div className="dashboard-column">
+                            <Goals />
+                        </div>
                     </div>
                 </div>
             </div>

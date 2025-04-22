@@ -1,0 +1,20 @@
+{
+    "employee_overview": "Обзор сотрудника",
+    "personal_details": "Личные данные",
+    "department": "Отдел",
+    "position": "Должность",
+    "supervisor": "Руководитель",
+    "reports_section": "Отчеты",
+    "goals_section": "Цели",
+    "kpi_goals": "KPI цели",
+    "competency_goals": "Цели по компетенциям",
+    "progress": "Прогресс",
+    "report_details": "Детали отчета",
+    "feedback": "Обратная связь",
+    "enter_feedback": "Введите обратную связь",
+    "submit_feedback": "Отправить обратную связь",
+    "ai_analysis": "AI анализ",
+    "feedback_submitted": "Обратная связь успешно отправлена",
+    "error_fetch_employee": "Не удалось получить данные сотрудника",
+    "error_submit_feedback": "Не удалось отправить обратную связь"
+}

@@ -1,0 +1,14 @@
+{
+    "performance_report": "Отчет о производительности",
+    "achievements_question": "Каковы были ваши основные достижения на этой неделе?",
+    "productivity_question": "Как бы вы оценили свою продуктивность?",
+    "improvement_areas_question": "Какие области нуждаются в улучшении?",
+    "time_management": "Управление временем",
+    "communication": "Коммуникация",
+    "technical_skills": "Технические навыки",
+    "leadership": "Лидерство",
+    "enter_answer": "Введите ваш ответ",
+    "submit_report": "Отправить отчет",
+    "report_submitted": "Отчет успешно отправлен!",
+    "thank_you": "Спасибо за отправку отчета."
+}

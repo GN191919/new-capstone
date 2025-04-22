@@ -1,9 +1,12 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const savedUser = localStorage.getItem('user');
+        return savedUser ? JSON.parse(savedUser) : null;
+    });
     const [loading, setLoading] = useState(false);
 
     const login = async (email, password) => {
@@ -14,7 +17,8 @@ export const AuthProvider = ({ children }) => {
                     const userData = {
                         email,
                         name: 'Test User',
-                        role: 'admin'
+                        role: 'admin',
+                        language: localStorage.getItem('language') || 'en'
                     };
                     setUser(userData);
                     localStorage.setItem('user', JSON.stringify(userData));
@@ -31,8 +35,12 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
+        const currentLanguage = localStorage.getItem('language');
         setUser(null);
         localStorage.removeItem('user');
+        if (currentLanguage) {
+            localStorage.setItem('language', currentLanguage);
+        }
     };
 
     return (

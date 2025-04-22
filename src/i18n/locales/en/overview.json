@@ -1,0 +1,20 @@
+{
+    "employee_overview": "Employee Overview",
+    "personal_details": "Personal Details",
+    "department": "Department",
+    "position": "Position",
+    "supervisor": "Supervisor",
+    "reports_section": "Reports",
+    "goals_section": "Goals",
+    "kpi_goals": "KPI Goals",
+    "competency_goals": "Competency Goals",
+    "progress": "Progress",
+    "report_details": "Report Details",
+    "feedback": "Feedback",
+    "enter_feedback": "Enter your feedback",
+    "submit_feedback": "Submit Feedback",
+    "ai_analysis": "AI Analysis",
+    "feedback_submitted": "Feedback submitted successfully",
+    "error_fetch_employee": "Failed to fetch employee data",
+    "error_submit_feedback": "Failed to submit feedback"
+}

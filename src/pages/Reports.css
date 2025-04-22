@@ -1,0 +1,131 @@
+.reports-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reports-container h2 {
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.question-container {
+    background-color: #F9FAFB;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.question-container h3 {
+    margin: 0 0 1rem 0;
+    font-size: 16px;
+    color: #4B5563;
+}
+
+.text-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #2F80ED;
+    box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.1);
+}
+
+.rating-input {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.rating-button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.rating-button:hover {
+    background-color: #F3F4F6;
+}
+
+.rating-button.selected {
+    background-color: #2F80ED;
+    color: white;
+    border-color: #2F80ED;
+}
+
+.multi-choice-input {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.choice-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.choice-label:hover {
+    background-color: #F3F4F6;
+}
+
+.choice-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #E5E7EB;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #2F80ED;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+    align-self: center;
+}
+
+.submit-button:hover {
+    background-color: #1C64F2;
+}
+
+@media (max-width: 640px) {
+    .reports-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .rating-input {
+        flex-wrap: wrap;
+    }
+}

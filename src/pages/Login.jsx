@@ -14,7 +14,8 @@ import eyeOpenIcon from '../assets/eye-open.png';
 import eyeClosedIcon from '../assets/eye-closed.png';
 import styles from './Login.module.css';
 
-const Login = ({t}) => {
+const Login = () => {
+    const { t, i18n } = useTranslation('translations');
     const navigate = useNavigate();
     const { user, login } = useAuth();
     const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ const Login = ({t}) => {
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const {i18n} = useTranslation();
+
     const lang = i18n.language;
 
     React.useEffect(() => {
@@ -47,8 +48,10 @@ const Login = ({t}) => {
         }
     };
 
-    const onLanguageChange = (langCode) => {
-        i18n.changeLanguage(langCode);
+    const onLanguageChange = async (langCode) => {
+        await i18n.changeLanguage(langCode);
+        localStorage.setItem('language', langCode);
+        document.documentElement.lang = langCode;
     }
 
     return (
@@ -125,20 +128,34 @@ const Login = ({t}) => {
                         {isLoading ? 'Signing in...' : t('Login button')}
                     </button>
                 </form>
-                <form className={styles.languageSelect}>
-                    <select 
-                        id="ddlViewBy" 
-                        value={lang}
-                        onChange={(e) => onLanguageChange(e.target.value)}
-                    >
-                        <option value="ru">Русский</option>
-                        <option value="en">English <ReactCountryFlag className="flag__attributes" countryCode="US" svg /></option>
-                        <option value="kz">Қазақша</option>
-                    </select>
-                </form>
+                <div className={styles.languageSelect}>
+                    <div className={styles.languageOptions}>
+                        <button 
+                            className={`${styles.languageButton} ${lang === 'ru' ? styles.active : ''}`}
+                            onClick={() => onLanguageChange('ru')}
+                        >
+                            <ReactCountryFlag countryCode="RU" svg />
+                            <span>Русский</span>
+                        </button>
+                        <button 
+                            className={`${styles.languageButton} ${lang === 'en' ? styles.active : ''}`}
+                            onClick={() => onLanguageChange('en')}
+                        >
+                            <ReactCountryFlag countryCode="US" svg />
+                            <span>English</span>
+                        </button>
+                        <button 
+                            className={`${styles.languageButton} ${lang === 'kz' ? styles.active : ''}`}
+                            onClick={() => onLanguageChange('kz')}
+                        >
+                            <ReactCountryFlag countryCode="KZ" svg />
+                            <span>Қазақша</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
 
-export default withTranslation()(Login);
+export default Login;

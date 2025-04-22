@@ -1,0 +1,14 @@
+{
+    "team_management": "Team Management",
+    "add_employee": "Add Employee",
+    "name": "Name",
+    "department": "Department",
+    "position": "Position",
+    "status": "Status",
+    "actions": "Actions",
+    "status_active": "Active",
+    "status_vacation": "On Vacation",
+    "status_overdue": "Overdue",
+    "error_fetch_employees": "Failed to fetch employees",
+    "error_delete_employee": "Failed to delete employee"
+}

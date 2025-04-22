@@ -1,0 +1,15 @@
+{
+    "goals": "Мақсаттар",
+    "kpi_goals": "KPI мақсаттары",
+    "competency_goals": "Құзыреттілік мақсаттары",
+    "add_goal": "Мақсат қосу",
+    "goal_name": "Мақсат атауы",
+    "goal_description": "Мақсат сипаттамасы",
+    "goal_type": "Мақсат түрі",
+    "goal_progress": "Үдеріс",
+    "kpi_limit_reached": "Сіз тек 3 KPI мақсатын қоса аласыз",
+    "competency_limit_reached": "Сіз тек 2 құзыреттілік мақсатын қоса аласыз",
+    "error_fetch_goals": "Мақсаттарды алу сәтсіз аяқталды",
+    "error_add_goal": "Мақсатты қосу сәтсіз аяқталды",
+    "error_update_progress": "Үдерісті жаңарту сәтсіз аяқталды"
+}

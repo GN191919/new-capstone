@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Sidebar.css';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import './Sidebar.css';
 
 // Icons for sidebar
 import { FaHome, FaFileAlt, FaBullseye, FaUsers, FaSitemap, FaCog, FaSignOutAlt } from 'react-icons/fa';
@@ -11,6 +12,7 @@ const Sidebar = () => {
     const location = useLocation();
     const { logout } = useAuth();
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };

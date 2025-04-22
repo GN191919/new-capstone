@@ -1,0 +1,15 @@
+{
+    "goals": "Цели",
+    "kpi_goals": "Цели KPI",
+    "competency_goals": "Цели компетенции",
+    "add_goal": "Добавить цель",
+    "goal_name": "Название цели",
+    "goal_description": "Описание цели",
+    "goal_type": "Тип цели",
+    "goal_progress": "Прогресс",
+    "kpi_limit_reached": "Вы можете добавить только до 3 целей KPI",
+    "competency_limit_reached": "Вы можете добавить только до 2 целей компетенции",
+    "error_fetch_goals": "Не удалось получить цели",
+    "error_add_goal": "Не удалось добавить цель",
+    "error_update_progress": "Не удалось обновить прогресс"
+}

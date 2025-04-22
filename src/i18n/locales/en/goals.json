@@ -1,0 +1,15 @@
+{
+    "goals": "Goals",
+    "kpi_goals": "KPI Goals",
+    "competency_goals": "Competency Goals",
+    "add_goal": "Add Goal",
+    "goal_name": "Goal Name",
+    "goal_description": "Goal Description",
+    "goal_type": "Goal Type",
+    "goal_progress": "Progress",
+    "kpi_limit_reached": "You can only add up to 3 KPI goals",
+    "competency_limit_reached": "You can only add up to 2 competency goals",
+    "error_fetch_goals": "Failed to fetch goals",
+    "error_add_goal": "Failed to add goal",
+    "error_update_progress": "Failed to update progress"
+}
