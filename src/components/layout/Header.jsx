@@ -27,7 +27,7 @@ const Header = ({ title }) => {
                 </div>
                 <div className="user-profile">
                     <div className="user-avatar">
-                        <span>{user?.name?.charAt(0) || 'U'}</span>
+                        <span>{user?.name?.charAt(0) || 'M'}</span>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation,  } from 'react-i18next';
 import './Goals.css';
 
 const Goals = ({ goals }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('dashboard');
     // Mock data for goals
     const mockGoals = [
         { id: 1, title: 'Improve team communication', progress: 75, type: 'KPI' },
@@ -15,13 +15,13 @@ const Goals = ({ goals }) => {
         <div className="goals-container">
             <div className="goals-header">
                 <div className="goals-title">
-                    <h3>My Goals</h3>
+                    <h3>{t('my_goals')}</h3>
                     <div className="goals-count">
                         <span className="icon">🎯</span>
-                        <span>3 active goals</span>
+                        <span>{t('active_goals')}</span>
                     </div>
                 </div>
-                <a href="#" className="view-all-link">view all</a>
+                <a href="/goals" className="view-all-link">{t('view_all')}</a>
             </div>
             
             <div className="goals-list">

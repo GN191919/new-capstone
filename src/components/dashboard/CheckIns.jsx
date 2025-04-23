@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './CheckIns.css';
+import { useTranslation,  } from 'react-i18next';
 
 const CheckIns = () => {
     const [activeTab, setActiveTab] = useState('Regular');
+
+    const { t } = useTranslation('dashboard');
     
     // Mock data for check-ins
     const checkIns = [
@@ -18,13 +21,9 @@ const CheckIns = () => {
         <div className="check-ins-container">
             <div className="check-ins-header">
                 <div className="check-ins-title">
-                    <h3>My Check-ins</h3>
-                    <div className="check-ins-count">
-                        <span className="icon">🕒</span>
-                        <span>0 out of 2 done this month</span>
-                    </div>
+                    <h3>{t('my_checkins')}</h3>
                 </div>
-                <a href="#" className="view-all-link">view all</a>
+                <a href="/reports" className="view-all-link">{t('view_all')}</a>
             </div>
             
             <div className="check-ins-tabs">
@@ -32,28 +31,28 @@ const CheckIns = () => {
                     className={`tab-button ${activeTab === 'Regular' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Regular')}
                 >
-                    Regular
+                    {t('regular')}
                 </button>
                 <button 
                     className={`tab-button ${activeTab === 'Quarter' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Quarter')}
                 >
-                    Quarter <span className="badge">1</span>
+                    {t('quarter')} <span className="badge">1</span>
                 </button>
                 <button 
                     className={`tab-button ${activeTab === 'Annual' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Annual')}
                 >
-                    Annual
+                    {t('annual')}
                 </button>
             </div>
             
             <div className="check-ins-table">
                 <div className="table-header">
-                    <div className="header-cell">Due date</div>
-                    <div className="header-cell">Submitted date</div>
-                    <div className="header-cell">Status</div>
-                    <div className="header-cell">Reviewed by</div>
+                    <div className="header-cell">{t('due_date')}</div>
+                    <div className="header-cell">{t('submitted_date')}</div>
+                    <div className="header-cell">{t('status')}</div>
+                    <div className="header-cell">{t('reviewed_by')}</div>
                 </div>
                 
                 {checkIns.map(checkIn => (
@@ -62,7 +61,7 @@ const CheckIns = () => {
                         <div className="table-cell">{checkIn.submittedDate}</div>
                         <div className="table-cell">
                             <span className={`status-badge ${checkIn.status === 'Submitted' ? 'submitted' : 'not-submitted'}`}>
-                                {checkIn.status}
+                                {t(checkIn.status)}
                             </span>
                         </div>
                         <div className="table-cell reviewer">

@@ -1,14 +1,19 @@
 {
     "my_goals": "My Goals",
-    "active_goals": "active goals",
+    "active_goals": "Active goals:",
     "view_all": "view all",
-    "my_checkins": "My Check-ins",
+    "my_checkins": "My Reports",
     "checkins_progress": "out of 2 done this month",
     "quarter": "Quarter",
     "due_date": "Due date",
     "submitted_date": "Submitted date",
     "status": "Status",
+    "regular": "Regular",
+    "annual": "Annual",
     "reviewed_by": "Reviewed by",
     "user_role": "Superviser",
-    "goal_progress": "Progress"
+    "goal_progress": "Progress",
+    "dashboard": "Dashboard",
+    "Submitted": "Submitted",
+    "Not Submitted": "Not submitted"
 }

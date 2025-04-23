@@ -12,7 +12,6 @@ const Sidebar = () => {
     const location = useLocation();
     const { logout } = useAuth();
     const navigate = useNavigate();
-    const { t } = useTranslation();
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };
@@ -21,6 +20,8 @@ const Sidebar = () => {
         logout();
         navigate('/login');
     };
+
+    const {t} = useTranslation('sidebar');
 
     return (
         <div className="sidebar">
@@ -32,31 +33,31 @@ const Sidebar = () => {
                     <li className={isActive('/dashboard')}>
                         <Link to="/dashboard">
                             <FaHome className="sidebar-icon" />
-                            <span>Dashboard</span>
+                            <span>{t('dashboard')}</span>
                         </Link>
                     </li>
                     <li className={isActive('/reports')}>
                         <Link to="/reports">
                             <FaFileAlt className="sidebar-icon" />
-                            <span>Reports</span>
+                            <span>{t('reports')}</span>
                         </Link>
                     </li>
                     <li className={isActive('/goals')}>
                         <Link to="/goals">
                             <FaBullseye className="sidebar-icon" />
-                            <span>Goals</span>
+                            <span>{t('goals')}</span>
                         </Link>
                     </li>
                     <li className={isActive('/team')}>
                         <Link to="/team">
                             <FaUsers className="sidebar-icon" />
-                            <span>Your Team</span>
+                            <span>{t('your_team')}</span>
                         </Link>
                     </li>
                     <li className={isActive('/organization')}>
                         <Link to="/organization">
                             <FaSitemap className="sidebar-icon" />
-                            <span>Your Organization</span>
+                            <span>{t('your_organization')}</span>
                         </Link>
                     </li>
                 </ul>
@@ -66,13 +67,13 @@ const Sidebar = () => {
                     <li className={isActive('/settings')}>
                         <Link to="/settings">
                             <FaCog className="sidebar-icon" />
-                            <span>Settings</span>
+                            <span>{t('settings')}</span>
                         </Link>
                     </li>
                     <li>
                         <Link to="/login" className="logout-link" onClick={handleLogout}>
                             <FaSignOutAlt className="sidebar-icon" />
-                            <span>Log out</span>
+                            <span>{t('logout')}</span>
                         </Link>
                     </li>
                 </ul>

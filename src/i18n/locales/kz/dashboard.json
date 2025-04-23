@@ -1,14 +1,19 @@
 {
     "my_goals": "Менің мақсаттарым",
-    "active_goals": "белсенді мақсаттар",
+    "active_goals": "Қойылған мақсаттар: ",
     "view_all": "барлығын көру",
-    "my_checkins": "Менің тексерулерім",
+    "my_checkins": "Менің есептемелерім",
     "checkins_progress": "осы айда 2-ден орындалды",
-    "quarter": "Тоқсан",
+    "quarter": "Тоқсандық",
     "due_date": "Өткізу мерзімі",
-    "submitted_date": "Жіберілген күні",
+    "submitted_date": "Тапсырылған күні",
     "status": "Күйі",
+    "regular": "Айлық",
+    "annual": "Жылдық",
     "reviewed_by": "Тексерген",
     "user_role": "Жетекші",
-    "goal_progress": "Үдеріс"
+    "goal_progress": "Үдеріс",
+    "dashboard": "Басты бет",
+    "Submitted": "Тапсырылды",
+    "Not Submitted": "Тапсырылмады"
 }

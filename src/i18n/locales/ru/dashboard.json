@@ -1,14 +1,19 @@
 {
     "my_goals": "Мои цели",
-    "active_goals": "активных целей",
+    "active_goals": "Актиных целей:",
     "view_all": "смотреть все",
-    "my_checkins": "Мои проверки",
+    "my_checkins": "Мои отчеты",
     "checkins_progress": "из 2 выполнено в этом месяце",
-    "quarter": "Квартал",
+    "quarter": "Кварталльные",
     "due_date": "Срок сдачи",
-    "submitted_date": "Дата отправки",
+    "submitted_date": "Дата сдачи",
+    "regular": "Ежемесячные",
+    "annual": "Ежегодные",
     "status": "Статус",
     "reviewed_by": "Проверено",
     "user_role": "Руководитель",
-    "goal_progress": "Прогресс"
+    "goal_progress": "Прогресс",
+    "dashboard": "Главная страница",
+    "Submitted": "Сдан",
+    "Not Submitted": "Не сдан"
 }

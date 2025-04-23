@@ -6,6 +6,7 @@ import UserInfo from '../components/dashboard/UserInfo';
 import CheckIns from '../components/dashboard/CheckIns';
 import Goals from '../components/dashboard/Goals';
 import './Dashboard.css';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
     const { user, logout } = useAuth();
@@ -22,10 +23,12 @@ const Dashboard = () => {
         navigate('/login');
     };
 
+    const { t } = useTranslation('dashboard');
+
     if (!user) return null;
 
     return (
-        <Layout title="Dashboard">
+        <Layout title={t('dashboard')}>
             <div className="dashboard-container">
                 <div className="dashboard-content">
                     <div className="dashboard-header">

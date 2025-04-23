@@ -1,7 +1,9 @@
 import React from 'react';
 import './UserInfo.css';
+import { useTranslation,  } from 'react-i18next';
 
 const UserInfo = ({ user }) => {
+    const { t } = useTranslation('dashboard');
     return (
         <div className="user-info-container">
             <div className="user-avatar">
@@ -9,7 +11,7 @@ const UserInfo = ({ user }) => {
             </div>
             <div className="user-details">
                 <h2 className="user-name">{user?.name || 'Moldir Turdybayeva'}</h2>
-                <p className="user-role">Superviser: {user?.supervisor || 'Moldir Turdybayeva'}</p>
+                <p className="user-role">{t('user_role')}: {user?.supervisor || 'Moldir Turdybayeva'}</p>
             </div>
         </div>
     );
