@@ -1,115 +1,93 @@
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import './Reports.css';
+import CheckIns from '../components/dashboard/CheckIns';
+import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 
 const Reports = () => {
-    const [questions, setQuestions] = useState([
-        { id: 1, type: 'text', question: 'What were your main achievements this week?' },
-        { id: 2, type: 'rating', question: 'How would you rate your productivity?' },
-        { id: 3, type: 'multiChoice', question: 'Which areas need improvement?', 
-          options: ['Time Management', 'Communication', 'Technical Skills', 'Leadership'] }
-    ]);
+    const [activeTab, setActiveTab] = useState('Regular');
 
-    const [answers, setAnswers] = useState({});
-    const [submitted, setSubmitted] = useState(false);
+    const { t } = useTranslation('reports');
+    
+    // Mock data for check-ins
+    const checkIns = [
+        { id: 1, dueDate: '18 Jul 2024', submittedDate: '18 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye', type: 'Regular'  },
+        { id: 2, dueDate: '04 Jul 2024', submittedDate: '04 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye', type: 'Quarter'},
+        { id: 3, dueDate: '20 Jun 2024', submittedDate: '20 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Annual'},
+        { id: 4, dueDate: '06 Jun 2024', submittedDate: '06 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Quarter' },
+        { id: 5, dueDate: '23 May 2024', submittedDate: '23 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Regular'  },
+        { id: 6, dueDate: '09 May 2024', submittedDate: '09 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Quarter' },
+    ];
 
-    const handleAnswerChange = (questionId, value) => {
-        setAnswers(prev => ({
-            ...prev,
-            [questionId]: value
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Here we would typically send the answers to the backend
-        console.log('Submitted answers:', answers);
-        setSubmitted(true);
-    };
-
-    const renderQuestion = (question) => {
-        switch (question.type) {
-            case 'text':
-                return (
-                    <textarea
-                        value={answers[question.id] || ''}
-                        onChange={(e) => handleAnswerChange(question.id, e.target.value)}
-                        placeholder="Enter your answer"
-                        className="text-input"
-                    />
-                );
-            case 'rating':
-                return (
-                    <div className="rating-input">
-                        {[1, 2, 3, 4, 5].map(rating => (
-                            <button
-                                key={rating}
-                                type="button"
-                                className={`rating-button ${answers[question.id] === rating ? 'selected' : ''}`}
-                                onClick={() => handleAnswerChange(question.id, rating)}
-                            >
-                                {rating}
-                            </button>
-                        ))}
-                    </div>
-                );
-            case 'multiChoice':
-                return (
-                    <div className="multi-choice-input">
-                        {question.options.map(option => (
-                            <label key={option} className="choice-label">
-                                <input
-                                    type="checkbox"
-                                    checked={answers[question.id]?.includes(option) || false}
-                                    onChange={(e) => {
-                                        const currentAnswers = answers[question.id] || [];
-                                        if (e.target.checked) {
-                                            handleAnswerChange(question.id, [...currentAnswers, option]);
-                                        } else {
-                                            handleAnswerChange(question.id, 
-                                                currentAnswers.filter(item => item !== option)
-                                            );
-                                        }
-                                    }}
-                                />
-                                {option}
-                            </label>
-                        ))}
-                    </div>
-                );
-            default:
-                return null;
-        }
-    };
-
-    if (submitted) {
-        return (
-            <Layout>
-                <div className="reports-container">
-                    <h2>Report Submitted Successfully!</h2>
-                    <p>Thank you for submitting your report.</p>
-                </div>
-            </Layout>
-        );
-    }
+    const filteredCheckIns = checkIns.filter(checkIn => checkIn.type === activeTab);
+    const reportTypes = ['Regular', 'Quarter', 'Annual'];
+    const regularCount = checkIns.filter(checkIn => checkIn.type === 'Regular' && checkIn.status === 'Not Submitted').length;
+    const quarterCount = checkIns.filter(checkIn => checkIn.type === 'Quarter' && checkIn.status === 'Not Submitted').length;
+    const annualCount = checkIns.filter(checkIn => checkIn.type === 'Annual' && checkIn.status === 'Not Submitted').length;
 
     return (
-        <Layout>
-            <div className="reports-container">
-                <h2>Performance Report</h2>
-                <form onSubmit={handleSubmit} className="report-form">
-                    {questions.map(question => (
-                        <div key={question.id} className="question-container">
-                            <h3>{question.question}</h3>
-                            {renderQuestion(question)}
+        <Layout title={t('reports')}>
+            <div className="check-ins-container">
+                <div className="check-ins-header">
+                    <div className="check-ins-title">
+                        <h3>{t('my_checkins')}</h3>
+                    </div>
+                </div>
+                
+                <div className="check-ins-tabs">
+                    <button 
+                        className={`tab-button ${activeTab === 'Regular' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Regular')}
+                    >
+                        {t('regular')} {regularCount === 0 ? (null): (<span className="badge">{regularCount}</span>)} 
+                    </button>
+                    <button 
+                        className={`tab-button ${activeTab === 'Quarter' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Quarter')}
+                    >
+                        {t('quarter')} {quarterCount === 0 ? (null) : (<span className="badge">{quarterCount}</span>)} 
+                    </button>
+                    <button 
+                        className={`tab-button ${activeTab === 'Annual' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Annual')}
+                    >
+                        {t('annual')} {annualCount === 0 ? (null): (<span className="badge">{annualCount}</span>)} 
+                    </button>
+                </div>
+                
+                <div className="check-ins-table">
+                    <div className="table-header">
+                        <div className="header-cell">{t('due_date')}</div>
+                        <div className="header-cell">{t('submitted_date')}</div>
+                        <div className="header-cell">{t('status')}</div>
+                        <div className="header-cell">{t('reviewed_by')}</div>
+                        <div className='header-cell'>{t('action')}</div>
+                    </div>
+                    
+                    {filteredCheckIns.map(checkIn => (
+                        <div className="table-row" key={checkIn.id}>
+                            <div className="table-cell">{checkIn.dueDate}</div>
+                            <div className="table-cell">{checkIn.submittedDate}</div>
+                            <div className="table-cell">
+                                <span className={`status-badge ${checkIn.status === 'Submitted' ? 'submitted' : 'not-submitted'}`}>
+                                    {t(checkIn.status)}
+                                </span>
+                            </div>
+                            <div className="table-cell reviewer">
+                                <div className="reviewer-avatar">OR</div>
+                                <span>{checkIn.reviewer}</span>
+                            </div>
+                            <div className="table-cell">
+                                <Link to = {`/reports/${checkIn.id}`}>
+                                <button className={`submit-button ${checkIn.status === 'Submitted' ? 'submitted' : 'not-submitted'}`}>{checkIn.status === 'Submitted' ?  t('Review') : t('Submit')}</button>
+                                </Link>
+                            </div>
                         </div>
                     ))}
-                    <button type="submit" className="submit-button">
-                        Submit Report
-                    </button>
-                </form>
+                </div>
             </div>
-        </Layout>
+    </Layout>
     );
 };
 

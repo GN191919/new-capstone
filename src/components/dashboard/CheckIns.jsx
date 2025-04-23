@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CheckIns.css';
 import { useTranslation,  } from 'react-i18next';
+import { type } from '@testing-library/user-event/dist/type';
 
 const CheckIns = () => {
     const [activeTab, setActiveTab] = useState('Regular');
@@ -9,13 +10,19 @@ const CheckIns = () => {
     
     // Mock data for check-ins
     const checkIns = [
-        { id: 1, dueDate: '18 Jul 2024', submittedDate: '18 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye' },
-        { id: 2, dueDate: '04 Jul 2024', submittedDate: '04 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye' },
-        { id: 3, dueDate: '20 Jun 2024', submittedDate: '20 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye' },
-        { id: 4, dueDate: '06 Jun 2024', submittedDate: '06 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye' },
-        { id: 5, dueDate: '23 May 2024', submittedDate: '23 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye' },
-        { id: 6, dueDate: '09 May 2024', submittedDate: '09 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye' },
+        { id: 1, dueDate: '18 Jul 2024', submittedDate: '18 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye', type: 'Regular'  },
+        { id: 2, dueDate: '04 Jul 2024', submittedDate: '04 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye', type: 'Quarter'},
+        { id: 3, dueDate: '20 Jun 2024', submittedDate: '20 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Annual'},
+        { id: 4, dueDate: '06 Jun 2024', submittedDate: '06 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Quarter' },
+        { id: 5, dueDate: '23 May 2024', submittedDate: '23 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Regular'  },
+        { id: 6, dueDate: '09 May 2024', submittedDate: '09 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Quarter' },
     ];
+
+    const regularCount = checkIns.filter(checkIn => checkIn.type === 'Regular' && checkIn.status === 'Not Submitted').length;
+    const quarterCount = checkIns.filter(checkIn => checkIn.type === 'Quarter' && checkIn.status === 'Not Submitted').length;
+    const annualCount = checkIns.filter(checkIn => checkIn.type === 'Annual' && checkIn.status === 'Not Submitted').length;
+
+    const filteredCheckIns = checkIns.filter(checkIn => checkIn.type === activeTab);
 
     return (
         <div className="check-ins-container">
@@ -27,24 +34,24 @@ const CheckIns = () => {
             </div>
             
             <div className="check-ins-tabs">
-                <button 
-                    className={`tab-button ${activeTab === 'Regular' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Regular')}
-                >
-                    {t('regular')}
-                </button>
-                <button 
-                    className={`tab-button ${activeTab === 'Quarter' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Quarter')}
-                >
-                    {t('quarter')} <span className="badge">1</span>
-                </button>
-                <button 
-                    className={`tab-button ${activeTab === 'Annual' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Annual')}
-                >
-                    {t('annual')}
-                </button>
+                    <button 
+                        className={`tab-button ${activeTab === 'Regular' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Regular')}
+                    >
+                        {t('regular')} {regularCount === 0 ? (null): (<span className="badge">{regularCount}</span>)} 
+                    </button>
+                    <button 
+                        className={`tab-button ${activeTab === 'Quarter' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Quarter')}
+                    >
+                        {t('quarter')} {quarterCount === 0 ? (null) : (<span className="badge">{quarterCount}</span>)} 
+                    </button>
+                    <button 
+                        className={`tab-button ${activeTab === 'Annual' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Annual')}
+                    >
+                        {t('annual')} {annualCount === 0 ? (null): (<span className="badge">{annualCount}</span>)} 
+                    </button>
             </div>
             
             <div className="check-ins-table">
@@ -55,7 +62,7 @@ const CheckIns = () => {
                     <div className="header-cell">{t('reviewed_by')}</div>
                 </div>
                 
-                {checkIns.map(checkIn => (
+                {filteredCheckIns.map(checkIn => (
                     <div className="table-row" key={checkIn.id}>
                         <div className="table-cell">{checkIn.dueDate}</div>
                         <div className="table-cell">{checkIn.submittedDate}</div>

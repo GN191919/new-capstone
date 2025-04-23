@@ -7,6 +7,7 @@ import Goals from './pages/Goals';
 import TeamManagement from './pages/TeamManagement';
 import EmployeeAddition from './pages/EmployeeAddition';
 import EmployeeOverview from './pages/EmployeeOverview';
+import ReportSubmission from './pages/ReportSubmission';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reports" element={<Reports />} />
+            <Route path="/reports/:reportID" element={<ReportSubmission />} />
             <Route path="/goals" element={<Goals />} />
             <Route path="/team" element={<TeamManagement />} />
             <Route path="/team/add" element={<EmployeeAddition />} />

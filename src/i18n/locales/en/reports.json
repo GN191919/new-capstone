@@ -10,5 +10,19 @@
     "enter_answer": "Enter your answer",
     "submit_report": "Submit Report",
     "report_submitted": "Report Submitted Successfully!",
-    "thank_you": "Thank you for submitting your report."
+    "thank_you": "Thank you for submitting your report.",
+    "reports": "Reports",
+    "reviewed_by": "Reviewed by",
+    "Submitted": "Submitted",
+    "Not Submitted": "Not submitted",
+    "status": "Status",
+    "regular": "Regular",
+    "annual": "Annual",
+    "quarter": "Quarter",
+    "due_date": "Due date",
+    "submitted_date": "Submitted date",
+    "my_checkins": "My Reports",
+    "action": "Action",
+    "Review": "Review",
+    "Submit": "Submit"
 }
