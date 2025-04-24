@@ -28,5 +28,12 @@
     "Not Submitted": "Тапсырылмады",
     "action": "Әрекет",
     "Submit": "Тапсыру",
-    "Review": "Тексеру"
+    "Review": "Тексеру",
+    "enter_answer_here": "Жауабыңызды еңгізіңіз...",
+    "submit_report": "Есепті жіберу",
+    "title" : "",
+    "report_success" : "Есептеме сәтті жіберілді!",
+    "thank_you" : "Есеп бергеніңіз үшін рахмет.",
+    "submit_report":"Есептемені жіберу",
+    "return_to_reports": "Есептемелерге қайту"
 }

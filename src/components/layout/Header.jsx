@@ -9,7 +9,7 @@ const Header = ({ title }) => {
     
     return (
         <div className="header">
-            <h1 className="header-title">{title}</h1>
+            <h1 className="header-title">{title}   </h1>
             <div className="header-right">
                 <div className="language-selector">
                     <select 

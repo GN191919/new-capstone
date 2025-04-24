@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import './ReportSubmission.css';
-
+import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 
 const ReportSubmission = () => {
     const [questions, setQuestions] = useState([
@@ -10,6 +11,11 @@ const ReportSubmission = () => {
         { id: 3, type: 'multiChoice', question: 'Which areas need improvement?', 
           options: ['Time Management', 'Communication', 'Technical Skills', 'Leadership'] }
     ]);
+
+    
+
+    const { t } = useTranslation('reports');
+
 
     const [answers, setAnswers] = useState({});
     const [submitted, setSubmitted] = useState(false);
@@ -35,7 +41,7 @@ const ReportSubmission = () => {
                     <textarea
                         value={answers[question.id] || ''}
                         onChange={(e) => handleAnswerChange(question.id, e.target.value)}
-                        placeholder="Enter your answer"
+                        placeholder={t('enter_answer_here')}
                         className="text-input"
                     />
                 );
@@ -87,8 +93,13 @@ const ReportSubmission = () => {
         return (
             <Layout>
                 <div className="reports-container">
-                    <h2>Report Submitted Successfully!</h2>
-                    <p>Thank you for submitting your report.</p>
+                    <h2>{t('report_success')}</h2>
+                    <p>{t("thank_you")}</p>
+                    <Link to="/reports">
+                    <button  className="submit-button">
+                        {t('return_to_reports')}
+                    </button>
+                    </Link>
                 </div>
             </Layout>
         );
@@ -106,7 +117,7 @@ const ReportSubmission = () => {
                         </div>
                     ))}
                     <button type="submit" className="submit-button">
-                        Submit Report
+                        {t('submit_report')}
                     </button>
                 </form>
             </div>

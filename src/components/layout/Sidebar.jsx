@@ -50,15 +50,15 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     
-                    {user?.role === 'supervisor' && (
+                    { (
                         <li className={isActive('/my-team')}>
                             <Link to="/my-team">
                                 <FaUsers className="sidebar-icon" />
-                                <span>{t('my_team')}</span>
+                                <span>{t('your_team')}</span>
                             </Link>
                         </li>
                     )}
-                    {(user?.role === 'admin' || user?.role === 'supervisor') && (
+                    { (
                         <li className={isActive('/organization')}>
                             <Link to="/organization">
                                 <FaSitemap className="sidebar-icon" />

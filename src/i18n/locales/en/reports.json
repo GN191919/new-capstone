@@ -24,5 +24,9 @@
     "my_checkins": "My Reports",
     "action": "Action",
     "Review": "Review",
-    "Submit": "Submit"
+    "Submit": "Submit",
+    "enter_answer_here": "Enter your answer here...",
+    "Submit Report": "Submit Report",
+    "title": "Performance Report",
+    "return_to_reports": "Return to Reports"
 }

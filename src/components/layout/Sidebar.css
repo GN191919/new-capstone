@@ -57,9 +57,25 @@
     border-left: 3px solid #DDAF53;
 }
 
+.sidebar-footer li {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sidebar-footer li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
 .sidebar-footer li a:hover {
     background-color: #F5F5F5;
     color: #DDAF53;
+    border-left: 3px solid #DDAF53;
 }
 
 .sidebar-icon {
@@ -79,4 +95,5 @@
 .logout-link:hover {
     background-color: #F5F5F5;
     color: #DC3545 !important;
+    border-left: 3px solid #DC3545;
 }
