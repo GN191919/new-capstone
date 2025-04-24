@@ -35,19 +35,19 @@
     margin: 0;
 }
 
-.sidebar-nav li,
-.sidebar-footer li {
-    margin-bottom: 5px;
+.sidebar-nav ul li {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.sidebar-nav li a,
-.sidebar-footer li a {
+.sidebar-nav ul li a {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    color: #666;
+    color: #333;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .sidebar-nav li.active a,

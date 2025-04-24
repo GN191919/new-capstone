@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import authService from '../services/authService';
 
 const AuthContext = createContext(null);
 
@@ -11,27 +12,18 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         setLoading(true);
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                if (email === 'test@example.com' && password === 'password123') {
-                    const userData = {
-                        email,
-                        name: 'Test User',
-                        role: 'admin',
-                        language: localStorage.getItem('language') || 'en'
-                    };
-                    setUser(userData);
-                    localStorage.setItem('user', JSON.stringify(userData));
-                    resolve({ success: true });
-                } else {
-                    resolve({ 
-                        success: false, 
-                        error: 'Invalid credentials. Use test@example.com / password123'
-                    });
-                }
-                setLoading(false);
-            }, 800);
-        });
+        try {
+            const response = await authService.login(email, password);
+            setUser(response.user);
+            return { success: true };
+        } catch (error) {
+            return { 
+                success: false, 
+                error: error.message || 'Invalid email or password. Please try again.'
+            };
+        } finally {
+            setLoading(false);
+        }
     };
 
     const logout = () => {

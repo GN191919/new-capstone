@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import performanceService from '../services/performanceService';
 import './EmployeeAddition.css';
+import { useTranslation } from 'react-i18next';
 
 const EmployeeAddition = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation('employee');
     const [supervisors, setSupervisors] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -77,7 +79,7 @@ const EmployeeAddition = () => {
                 navigate('/team');
             }, 2000);
         } catch (err) {
-            setError(err.message || 'Failed to add employee');
+            setError(err.message || t('error_save'));
         } finally {
             setLoading(false);
         }
@@ -95,7 +97,7 @@ const EmployeeAddition = () => {
                         <h3>Personal Information</h3>
                         <div className="form-row">
                             <div className="form-group">
-                                <label htmlFor="firstName">First Name (Latin)</label>
+                                <label htmlFor="firstName">{t('first_name')}</label>
                                 <input
                                     type="text"
                                     id="firstName"
@@ -106,7 +108,7 @@ const EmployeeAddition = () => {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="lastName">Last Name (Latin)</label>
+                                <label htmlFor="lastName">{t('last_name')}</label>
                                 <input
                                     type="text"
                                     id="lastName"
@@ -120,7 +122,7 @@ const EmployeeAddition = () => {
 
                         <div className="form-row">
                             <div className="form-group">
-                                <label htmlFor="firstNameCyrillic">First Name (Cyrillic)</label>
+                                <label htmlFor="firstNameCyrillic">{t('first_name_cyrillic')}</label>
                                 <input
                                     type="text"
                                     id="firstNameCyrillic"
@@ -131,7 +133,7 @@ const EmployeeAddition = () => {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="lastNameCyrillic">Last Name (Cyrillic)</label>
+                                <label htmlFor="lastNameCyrillic">{t('last_name_cyrillic')}</label>
                                 <input
                                     type="text"
                                     id="lastNameCyrillic"
@@ -145,7 +147,7 @@ const EmployeeAddition = () => {
 
                         <div className="form-row">
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="email">{t('email')}</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -162,7 +164,7 @@ const EmployeeAddition = () => {
                         <h3>Position Information</h3>
                         <div className="form-row">
                             <div className="form-group">
-                                <label htmlFor="department">Department</label>
+                                <label htmlFor="department">{t('department')}</label>
                                 <input
                                     type="text"
                                     id="department"
@@ -173,7 +175,7 @@ const EmployeeAddition = () => {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="title">Title</label>
+                                <label htmlFor="title">{t('title')}</label>
                                 <input
                                     type="text"
                                     id="title"
@@ -186,7 +188,7 @@ const EmployeeAddition = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="supervisorId">Supervisor</label>
+                            <label htmlFor="supervisorId">{t('supervisor')}</label>
                             <select
                                 id="supervisorId"
                                 name="supervisorId"
@@ -218,7 +220,7 @@ const EmployeeAddition = () => {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label>Date</label>
+                                        <label>{t('training_date')}</label>
                                         <input
                                             type="date"
                                             value={record.date}
@@ -227,7 +229,7 @@ const EmployeeAddition = () => {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label>Description</label>
+                                    <label>{t('training_description')}</label>
                                     <textarea
                                         value={record.description}
                                         onChange={(e) => handleTrainingRecordChange(index, 'description', e.target.value)}
@@ -257,7 +259,7 @@ const EmployeeAddition = () => {
                             className="submit-button"
                             disabled={loading}
                         >
-                            {loading ? 'Adding...' : 'Add Employee'}
+                            {loading ? t('adding') : t('save_employee')}
                         </button>
                     </div>
                 </form>

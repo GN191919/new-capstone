@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './Sidebar.css';
@@ -10,7 +11,7 @@ import { FaHome, FaFileAlt, FaBullseye, FaUsers, FaSitemap, FaCog, FaSignOutAlt 
 
 const Sidebar = () => {
     const location = useLocation();
-    const { logout } = useAuth();
+    const { logout, user } = useAuth();
     const navigate = useNavigate();
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
@@ -48,18 +49,23 @@ const Sidebar = () => {
                             <span>{t('goals')}</span>
                         </Link>
                     </li>
-                    <li className={isActive('/team')}>
-                        <Link to="/team">
-                            <FaUsers className="sidebar-icon" />
-                            <span>{t('your_team')}</span>
-                        </Link>
-                    </li>
-                    <li className={isActive('/organization')}>
-                        <Link to="/organization">
-                            <FaSitemap className="sidebar-icon" />
-                            <span>{t('your_organization')}</span>
-                        </Link>
-                    </li>
+                    
+                    {user?.role === 'supervisor' && (
+                        <li className={isActive('/my-team')}>
+                            <Link to="/my-team">
+                                <FaUsers className="sidebar-icon" />
+                                <span>{t('my_team')}</span>
+                            </Link>
+                        </li>
+                    )}
+                    {(user?.role === 'admin' || user?.role === 'supervisor') && (
+                        <li className={isActive('/organization')}>
+                            <Link to="/organization">
+                                <FaSitemap className="sidebar-icon" />
+                                <span>{t('your_organization')}</span>
+                            </Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
             <div className="sidebar-footer">

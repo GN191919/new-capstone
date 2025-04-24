@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout/Layout';
 import './Reports.css';
 import CheckIns from '../components/dashboard/CheckIns';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import performanceService from '../services/performanceService';
 
 const Reports = () => {
     const [activeTab, setActiveTab] = useState('Regular');
 
     const { t } = useTranslation('reports');
     
-    // Mock data for check-ins
-    const checkIns = [
-        { id: 1, dueDate: '18 Jul 2024', submittedDate: '18 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye', type: 'Regular'  },
-        { id: 2, dueDate: '04 Jul 2024', submittedDate: '04 Jul 2024', status: 'Not Submitted', reviewer: 'Olivia Rhye', type: 'Quarter'},
-        { id: 3, dueDate: '20 Jun 2024', submittedDate: '20 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Annual'},
-        { id: 4, dueDate: '06 Jun 2024', submittedDate: '06 Jun 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Quarter' },
-        { id: 5, dueDate: '23 May 2024', submittedDate: '23 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Regular'  },
-        { id: 6, dueDate: '09 May 2024', submittedDate: '09 May 2024', status: 'Submitted', reviewer: 'Olivia Rhye', type: 'Quarter' },
-    ];
+    const [checkIns, setCheckIns] = useState([]);
+
+    useEffect(() => {
+        const fetchCheckIns = async () => {
+            try {
+                const data = await performanceService.getCheckIns();
+                setCheckIns(data);
+            } catch (error) {
+                console.error('Failed to fetch check-ins:', error);
+            }
+        };
+        fetchCheckIns();
+    }, []);
 
     const filteredCheckIns = checkIns.filter(checkIn => checkIn.type === activeTab);
     const reportTypes = ['Regular', 'Quarter', 'Annual'];

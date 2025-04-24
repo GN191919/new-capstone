@@ -1,15 +1,31 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Reports from './pages/Reports';
 import Goals from './pages/Goals';
-import TeamManagement from './pages/TeamManagement';
+import Organization from './pages/Organization';
 import EmployeeAddition from './pages/EmployeeAddition';
 import EmployeeOverview from './pages/EmployeeOverview';
 import ReportSubmission from './pages/ReportSubmission';
+import MyTeam from './pages/MyTeam';
 
 function App() {
+    const { user } = useAuth();
+
+    const ProtectedRoute = ({ children, allowedRoles }) => {
+        if (!user) {
+            return <Navigate to="/login" />;
+        }
+
+        if (!allowedRoles.includes(user.role)) {
+            return <Navigate to="/dashboard" />;
+        }
+
+        return children;
+    };
+
     return (
         <Routes>
             <Route path="/" element={<Login />} />
@@ -18,9 +34,26 @@ function App() {
             <Route path="/reports" element={<Reports />} />
             <Route path="/reports/:reportID" element={<ReportSubmission />} />
             <Route path="/goals" element={<Goals />} />
-            <Route path="/team" element={<TeamManagement />} />
-            <Route path="/team/add" element={<EmployeeAddition />} />
-            <Route path="/team/:employeeId" element={<EmployeeOverview />} />
+            <Route path="/my-team" element={
+                <ProtectedRoute allowedRoles={['supervisor']}>
+                    <MyTeam />
+                </ProtectedRoute>
+            } />
+            <Route path="/organization" element={
+                <ProtectedRoute allowedRoles={['admin', 'supervisor']}>
+                    <Organization />
+                </ProtectedRoute>
+            } />
+            <Route path="/organization/add" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                    <EmployeeAddition />
+                </ProtectedRoute>
+            } />
+            <Route path="/organization/:id" element={
+                <ProtectedRoute allowedRoles={['admin', 'supervisor']}>
+                    <EmployeeOverview />
+                </ProtectedRoute>
+            } />
         </Routes>
     );
 }

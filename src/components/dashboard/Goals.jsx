@@ -1,15 +1,27 @@
-import React from 'react';
-import { useTranslation,  } from 'react-i18next';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import performanceService from '../../services/performanceService';
 import './Goals.css';
 
-const Goals = ({ goals }) => {
+const Goals = () => {
     const { t } = useTranslation('dashboard');
-    // Mock data for goals
-    const mockGoals = [
-        { id: 1, title: 'Improve team communication', progress: 75, type: 'KPI' },
-        { id: 2, title: 'Complete project documentation', progress: 40, type: 'KPI' },
-        { id: 3, title: 'Leadership skills development', progress: 60, type: 'Competency' },
-    ];
+    const [goals, setGoals] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchGoals = async () => {
+            try {
+                const competencyGoals = await performanceService.getCompetencyGoals();
+                setGoals(competencyGoals);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchGoals();
+    }, []);
 
     return (
         <div className="goals-container">
@@ -25,7 +37,11 @@ const Goals = ({ goals }) => {
             </div>
             
             <div className="goals-list">
-                {(goals || mockGoals).map(goal => (
+                {loading ? (
+                    <div className="loading-message">{t('loading')}...</div>
+                ) : error ? (
+                    <div className="error-message">{error}</div>
+                ) : goals.map(goal => (
                     <div className="goal-item" key={goal.id}>
                         <div className="goal-info">
                             <div className="goal-title">{goal.title}</div>

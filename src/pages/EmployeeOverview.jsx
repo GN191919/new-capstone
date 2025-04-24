@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Layout from '../components/layout/Layout';
 import performanceService from '../services/performanceService';
 import './EmployeeOverview.css';
 
 const EmployeeOverview = () => {
+    const { t } = useTranslation(['overview']);
+
     const { employeeId } = useParams();
     const [employee, setEmployee] = useState(null);
     const [selectedReport, setSelectedReport] = useState(null);
@@ -22,7 +25,7 @@ const EmployeeOverview = () => {
             const data = await performanceService.getEmployeeDetails(employeeId);
             setEmployee(data);
         } catch (err) {
-            setError('Failed to fetch employee data');
+            setError(t('error_fetch_employee'));
         } finally {
             setLoading(false);
         }
@@ -36,11 +39,11 @@ const EmployeeOverview = () => {
     const handleFeedbackSubmit = async () => {
         try {
             await performanceService.submitFeedback(employeeId, selectedReport.id, feedback);
-            setSuccess('Feedback submitted successfully');
+            setSuccess(t('feedback_submitted'));
             await fetchEmployeeData(); // Refresh data
             setTimeout(() => setSuccess(''), 3000);
         } catch (err) {
-            setError(err.message || 'Failed to submit feedback');
+            setError(err.message || t('error_submit_feedback'));
         }
     };
 
@@ -50,12 +53,13 @@ const EmployeeOverview = () => {
     return (
         <Layout>
             <div className="employee-overview-container">
+                <h1 className="page-title">{t('employee_overview')}</h1>
                 <div className="employee-header">
                     <h2>{employee.name}</h2>
                     <div className="employee-info">
-                        <p><strong>Title:</strong> {employee.title}</p>
-                        <p><strong>Department:</strong> {employee.department}</p>
-                        <p><strong>Email:</strong> {employee.email}</p>
+                        <p><strong>{t('position')}:</strong> {employee.title}</p>
+                        <p><strong>{t('department')}:</strong> {employee.department}</p>
+                        <p><strong>{t('email')}:</strong> {employee.email}</p>
                     </div>
                 </div>
 
@@ -64,7 +68,7 @@ const EmployeeOverview = () => {
 
                 <div className="overview-grid">
                     <div className="reports-section">
-                        <h3>Reports</h3>
+                        <h3>{t('reports_section')}</h3>
                         <div className="reports-list">
                             {employee.reports.map(report => (
                                 <div
@@ -83,10 +87,10 @@ const EmployeeOverview = () => {
                     </div>
 
                     <div className="goals-section">
-                        <h3>Goals Progress</h3>
+                        <h3>{t('goals_section')}</h3>
                         <div className="goals-list">
                             <div className="goals-category">
-                                <h4>KPI Goals ({employee.goals.kpi.length}/3)</h4>
+                                <h4>{t('kpi_goals')} ({employee.goals.kpi.length}/3)</h4>
                                 {employee.goals.kpi.map(goal => (
                                     <div key={goal.id} className="goal-card">
                                         <h5>{goal.name}</h5>
@@ -103,7 +107,7 @@ const EmployeeOverview = () => {
                             </div>
 
                             <div className="goals-category">
-                                <h4>Competency Goals ({employee.goals.competency.length}/2)</h4>
+                                <h4>{t('competency_goals')} ({employee.goals.competency.length}/2)</h4>
                                 {employee.goals.competency.map(goal => (
                                     <div key={goal.id} className="goal-card">
                                         <h5>{goal.name}</h5>
@@ -123,7 +127,7 @@ const EmployeeOverview = () => {
 
                 {selectedReport && (
                     <div className="report-detail-section">
-                        <h3>Report Details</h3>
+                        <h3>{t('report_details')}</h3>
                         <div className="report-content">
                             {selectedReport.questions.map((question, index) => (
                                 <div key={index} className="question-answer">
@@ -134,11 +138,11 @@ const EmployeeOverview = () => {
                         </div>
 
                         <div className="feedback-section">
-                            <h4>Supervisor Feedback</h4>
+                            <h4>{t('feedback')}</h4>
                             <textarea
                                 value={feedback}
                                 onChange={(e) => setFeedback(e.target.value)}
-                                placeholder="Enter your feedback here..."
+                                placeholder={t('enter_feedback')}
                                 rows={4}
                             />
                             <button
@@ -146,14 +150,14 @@ const EmployeeOverview = () => {
                                 onClick={handleFeedbackSubmit}
                                 disabled={!feedback.trim()}
                             >
-                                Submit Feedback
+                                {t('submit_feedback')}
                             </button>
                         </div>
                     </div>
                 )}
 
                 <div className="ai-analysis-section">
-                    <h3>AI Analysis</h3>
+                    <h3>{t('ai_analysis')}</h3>
                     <div className="analysis-content">
                         {employee.aiAnalysis ? (
                             <p>{employee.aiAnalysis}</p>

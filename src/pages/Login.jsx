@@ -39,10 +39,14 @@ const Login = () => {
         setIsLoading(true);
 
         try {
-            await login(email, password, rememberMe);
-            navigate('/dashboard');
+            const response = await login(email, password, rememberMe);
+            if (response.success) {
+                navigate('/dashboard');
+            } else {
+                setError(response.error);
+            }
         } catch (error) {
-            setError('Invalid email or password');
+            setError('An unexpected error occurred. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -67,7 +71,7 @@ const Login = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className={styles.form}>
-                    <div className={styles.inputGroup}>
+                    <div className={`${styles.inputGroup} ${error ? styles.inputError : ''}`}>
                         <label className={styles.inputLabel}>{t('Email')}</label>
                         <div className={styles.inputWrapper}>
                             <img src={userIcon} alt="" className={styles.icon} />
@@ -82,7 +86,7 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <div className={styles.inputGroup}>
+                    <div className={`${styles.inputGroup} ${error ? styles.inputError : ''}`}>
                         <label className={styles.inputLabel}>{t('Password')}</label>
                         <div className={styles.inputWrapper}>
                             <img src={lockIcon} alt="" className={styles.icon} />
