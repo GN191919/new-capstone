@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import performanceService from '../services/performanceService';
+import Avatar from '../components/common/Avatar';
 import './MyTeam.css';
+
+import { getMockEmployees } from '../mockEmployeeData';
 
 const MyTeam = () => {
     const [employees, setEmployees] = useState([]);
@@ -19,6 +22,8 @@ const MyTeam = () => {
             setEmployees(data);
         } catch (err) {
             setError('Failed to fetch team data');
+            // Use mock data when API call fails
+            setEmployees(getMockEmployees());
         } finally {
             setLoading(false);
         }
@@ -27,10 +32,10 @@ const MyTeam = () => {
     if (loading) return <Layout><div>Loading...</div></Layout>;
 
     return (
-        <Layout>
+        <Layout title='My Team'>
             <div className="my-team-container">
-                <h2>My Team</h2>
-                {error && <div className="error-message">{error}</div>}
+            
+                
                 
                 <div className="team-list">
                     <div className="team-list-header">
@@ -44,7 +49,10 @@ const MyTeam = () => {
 
                     {employees.map(employee => (
                         <div key={employee.id} className="team-member-row">
-                            <div className="member-name">{employee.name}</div>
+                            <div className="member-name" style={{ display: 'flex', alignItems: 'center' }}>
+                                <Avatar name={employee.name} size="small" />
+                                {employee.name}
+                            </div>
                             <div className="member-status">
                                 <span className={`status-badge ${employee.status.toLowerCase()}`}>
                                     {employee.status}

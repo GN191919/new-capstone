@@ -1,23 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import performanceService from '../../services/performanceService';
 import './CheckIns.css';
-import { useTranslation,  } from 'react-i18next';
-import { type } from '@testing-library/user-event/dist/type';
+import { useTranslation } from 'react-i18next';
 
 const CheckIns = () => {
     const [activeTab, setActiveTab] = useState('Regular');
-
     const { t } = useTranslation('dashboard');
-    
     const [checkIns, setCheckIns] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // Mock data for check-ins
+    const mockCheckIns = [
+        {
+            id: 1,
+            type: 'Regular',
+            dueDate: '2023-11-15',
+            submittedDate: '2023-11-14',
+            status: 'Submitted',
+            reviewer: 'Olzhas Rakhimov'
+        },
+        {
+            id: 2,
+            type: 'Regular',
+            dueDate: '2023-12-15',
+            submittedDate: '',
+            status: 'Not Submitted',
+            reviewer: 'Olzhas Rakhimov'
+        },
+        {
+            id: 3,
+            type: 'Quarter',
+            dueDate: '2023-09-30',
+            submittedDate: '2023-09-28',
+            status: 'Submitted',
+            reviewer: 'Olzhas Rakhimov'
+        },
+        {
+            id: 4,
+            type: 'Quarter',
+            dueDate: '2023-12-31',
+            submittedDate: '',
+            status: 'Not Submitted',
+            reviewer: 'Olzhas Rakhimov'
+        },
+        {
+            id: 5,
+            type: 'Annual',
+            dueDate: '2023-12-31',
+            submittedDate: '',
+            status: 'Not Submitted',
+            reviewer: 'Olzhas Rakhimov'
+        }
+    ];
 
     useEffect(() => {
         const fetchCheckIns = async () => {
+            setLoading(true);
             try {
                 const data = await performanceService.getCheckIns();
                 setCheckIns(data);
+                setError(null);
             } catch (error) {
                 console.error('Failed to fetch check-ins:', error);
+                setError('Failed to fetch check-ins from server. Showing mock data.');
+                setCheckIns(mockCheckIns);
+            } finally {
+                setLoading(false);
             }
         };
         fetchCheckIns();

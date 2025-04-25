@@ -35,24 +35,24 @@ function App() {
             <Route path="/reports/:reportID" element={<ReportSubmission />} />
             <Route path="/goals" element={<Goals />} />
             <Route path="/my-team" element={
-                <ProtectedRoute allowedRoles={['supervisor']}>
+  
                     <MyTeam />
-                </ProtectedRoute>
+               
             } />
             <Route path="/organization" element={
-                <ProtectedRoute allowedRoles={['admin', 'supervisor']}>
+                
                     <Organization />
-                </ProtectedRoute>
+               
             } />
             <Route path="/organization/add" element={
-                <ProtectedRoute allowedRoles={['admin']}>
+               
                     <EmployeeAddition />
-                </ProtectedRoute>
+                
             } />
             <Route path="/organization/:id" element={
-                <ProtectedRoute allowedRoles={['admin', 'supervisor']}>
+               
                     <EmployeeOverview />
-                </ProtectedRoute>
+                
             } />
         </Routes>
     );

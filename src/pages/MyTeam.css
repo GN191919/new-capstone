@@ -51,7 +51,7 @@
 
 .progress-fill {
     height: 100%;
-    background-color: #4CAF50;
+    background-color: #DDAF53; /* Changed from green to gold */
     transition: width 0.3s ease;
 }
 
@@ -79,18 +79,20 @@
 
 .review-button {
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background-color: #DDAF53; /* Added gold background color */
     color: white;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
     text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    cursor: pointer;
     font-size: 0.875rem;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease;
 }
 
 .review-button:hover {
-    background-color: #0056b3;
+    background-color: #C69C48; /* Darker gold for hover state */
 }
 
 .error-message {

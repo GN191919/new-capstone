@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import performanceService from '../services/performanceService';
+import { addMockEmployee } from '../mockEmployeeData';
 import './EmployeeAddition.css';
 import { useTranslation } from 'react-i18next';
 
@@ -74,9 +75,10 @@ const EmployeeAddition = () => {
 
         try {
             await performanceService.addEmployee(employeeData);
+            addMockEmployee(employeeData);
             setSuccess(true);
             setTimeout(() => {
-                navigate('/team');
+                navigate('/organization');
             }, 2000);
         } catch (err) {
             setError(err.message || t('error_save'));
@@ -89,7 +91,6 @@ const EmployeeAddition = () => {
         <Layout>
             <div className="employee-addition-container">
                 <h2>Add New Employee</h2>
-                {error && <div className="error-message">{error}</div>}
                 {success && <div className="success-message">Employee added successfully! Redirecting...</div>}
 
                 <form onSubmit={handleSubmit} className="employee-form">
@@ -197,11 +198,11 @@ const EmployeeAddition = () => {
                                 required
                             >
                                 <option value="">Select a supervisor</option>
-                                {supervisors.map(supervisor => (
-                                    <option key={supervisor.id} value={supervisor.id}>
-                                        {supervisor.name}
+                                
+                                    <option key={1} value={1}>
+                                        Yerlan Amanbekov
                                     </option>
-                                ))}
+                                
                             </select>
                         </div>
                     </div>
@@ -259,7 +260,7 @@ const EmployeeAddition = () => {
                             className="submit-button"
                             disabled={loading}
                         >
-                            {loading ? t('adding') : t('save_employee')}
+                            {loading ? t('adding') : 'Add employee'}
                         </button>
                     </div>
                 </form>

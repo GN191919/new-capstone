@@ -10,7 +10,7 @@ const UserInfo = ({ user }) => {
                 <span>{user?.name?.charAt(0) || 'M'}</span>
             </div>
             <div className="user-details">
-                <h2 className="user-name">{user?.name || t('loading')}</h2>
+                <h2 className="user-name">{user?.name || "Yerlan Amanbekov"}</h2>
                 <p className="user-role">{t('user_role')}: {user?.supervisor || t('loading')}</p>
             </div>
         </div>
